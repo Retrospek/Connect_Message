@@ -3,8 +3,6 @@ import streamlit as st
 from datetime import datetime
 import pages
 import requests
-
-
 # Configuration Key
 firebaseConfig = {
   'apiKey': "AIzaSyDUEY-XrqhXgMqPgFuJfTnjNaai3JgCwAM",
@@ -38,8 +36,9 @@ good = False
 if choice == 'Sign up':
     handle = st.sidebar.text_input('Please input your app handle name', value='Default')
     submit = st.sidebar.button('Create my account')
-    try:
-        if submit:
+
+    if submit:
+        try: 
             user = auth.create_user_with_email_and_password(email, password)
             st.success('Your account is created suceesfully!')
             st.balloons()
@@ -49,8 +48,9 @@ if choice == 'Sign up':
             db.child(user['localId']).child("ID").set(user['localId'])
             st.title('Welcome' + handle)
             st.info('Login via login drop down selection')
-    except requests.exceptions.HTTPError:
-        st.error("Please fill out the correct information")
+            
+        except requests.exceptions.HTTPError:
+            st.error("Please fill out the correct information")
 
 
 # Login Block
