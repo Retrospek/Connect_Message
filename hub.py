@@ -52,7 +52,6 @@ if choice == 'Sign up':
         except requests.exceptions.HTTPError:
             st.error("Please fill out the correct information")
 
-
 # Login Block
 if choice == 'Login':
     login = st.sidebar.button('Login')
@@ -64,6 +63,7 @@ if choice == 'Login':
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
             bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
             good = True
+            st.write("none")
         except requests.exceptions.HTTPError:
             st.error("Please fill out the correct information")
 
@@ -77,8 +77,6 @@ if good:
         st.write("none")
     if bio == 'Settings':
         pages.settings(db, user, storage)
-        st.write("none")
-
     logout = st.sidebar.button('Logout')
 
 
