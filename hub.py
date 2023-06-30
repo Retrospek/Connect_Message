@@ -60,12 +60,13 @@ if choice == 'Login':
     if login:
         try: 
             user = auth.sign_in_with_email_and_password(email,password)
-            st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-            bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
-            good = True
-            st.write(good)
         except requests.exceptions.HTTPError:
             st.error("Please fill out the correct information")
+
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+        bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
+        good = True
+        
 
 
 #',['Home','Workplace Feeds', 'Settings'
@@ -74,7 +75,6 @@ if good:
         pages.home(db, user)
     if bio == 'Workplace Feeds':
         pages.workplace(db)
-        st.write("none")
     if bio == 'Settings':
         pages.settings(db, user, storage)
     logout = st.sidebar.button('Logout')
