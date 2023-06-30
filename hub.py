@@ -59,10 +59,13 @@ if choice == 'Login':
     forgot_password = st.sidebar.button('Reset Pass')
     change_email = st.sidebar.button('Change Email')
     if login:
-        user = auth.sign_in_with_email_and_password(email,password)
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-        bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
-        good = True
+        try: 
+            user = auth.sign_in_with_email_and_password(email,password)
+            st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+            bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
+            good = True
+        except requests.exceptions.HTTPError:
+            st.error("Please fill out the correct information")
 
 
 #',['Home','Workplace Feeds', 'Settings'
