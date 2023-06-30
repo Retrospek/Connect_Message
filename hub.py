@@ -52,31 +52,27 @@ if choice == 'Sign up':
         except requests.exceptions.HTTPError:
             st.error("Please fill out the correct information")
 
+
 # Login Block
 if choice == 'Login':
     login = st.sidebar.button('Login')
     forgot_password = st.sidebar.button('Reset Pass')
     change_email = st.sidebar.button('Change Email')
     if login:
-        try: 
-            user = auth.sign_in_with_email_and_password(email,password)
-        except requests.exceptions.HTTPError:
-            st.error("Please fill out the correct information")
-
+        user = auth.sign_in_with_email_and_password(email,password)
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
         bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
         good = True
-        if good:
-            if bio == 'Home':
-                pages.home(db, user)
-            if bio == 'Workplace Feeds':
-                pages.workplace(db)
-            if bio == 'Settings':
-                pages.settings(db, user, storage)
-            logout = st.sidebar.button('Logout')
-
 
 
 #',['Home','Workplace Feeds', 'Settings'
+if good:
+    if bio == 'Home':
+        pages.home(db, user)
+    if bio == 'Workplace Feeds':
+        pages.workplace(db)
+    if bio == 'Settings':
+        pages.settings(db, user, storage)
+    logout = st.sidebar.button('Logout')
 
 
