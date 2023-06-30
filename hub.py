@@ -60,13 +60,13 @@ if choice == 'Login':
     change_email = st.sidebar.button('Change Email')
     if login:
         user = auth.sign_in_with_email_and_password(email,password)
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-        bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'], index=1)
         good = True
 
 
 #',['Home','Workplace Feeds', 'Settings'
 if good:
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
     if bio == 'Home':
         pages.home(db, user)
     if bio == 'Workplace Feeds':
