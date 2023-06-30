@@ -2,6 +2,8 @@ import pyrebase
 import streamlit as st
 from datetime import datetime
 import pages
+import requests
+
 
 # Configuration Key
 firebaseConfig = {
@@ -36,17 +38,19 @@ good = False
 if choice == 'Sign up':
     handle = st.sidebar.text_input('Please input your app handle name', value='Default')
     submit = st.sidebar.button('Create my account')
-
-    if submit:
-        user = auth.create_user_with_email_and_password(email, password)
-        st.success('Your account is created suceesfully!')
-        st.balloons()
-        # Sign in
-        user = auth.sign_in_with_email_and_password(email, password)
-        db.child(user['localId']).child("Handle").set(handle)
-        db.child(user['localId']).child("ID").set(user['localId'])
-        st.title('Welcome' + handle)
-        st.info('Login via login drop down selection')
+    try:
+        if submit:
+            user = auth.create_user_with_email_and_password(email, password)
+            st.success('Your account is created suceesfully!')
+            st.balloons()
+            # Sign in
+            user = auth.sign_in_with_email_and_password(email, password)
+            db.child(user['localId']).child("Handle").set(handle)
+            db.child(user['localId']).child("ID").set(user['localId'])
+            st.title('Welcome' + handle)
+            st.info('Login via login drop down selection')
+    except requests.exceptions.HTTPError:
+        st.error("Please fill out the correct information")
 
 
 # Login Block
