@@ -74,8 +74,11 @@ if good:
         pages.home(db, user)
     if bio == 'Workplace Feeds':
         pages.workplace(db)
+        st.write("none")
     if bio == 'Settings':
         pages.settings(db, user, storage)
+        st.write("none")
+
     logout = st.sidebar.button('Logout')
 
 
