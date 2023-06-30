@@ -52,14 +52,14 @@ if choice == 'Sign up':
 # Login Block
 if choice == 'Login':
     login = st.sidebar.button('Login')
-    forgot_password = st.sidebar.button('Reset Pass')
+    #forgot_password = st.sidebar.button('Reset Pass')
     change_email = st.sidebar.button('Change Email')
     if login:
         user = auth.sign_in_with_email_and_password(email,password)
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
         bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
         good = True
-    if forgot_password:
+    #if forgot_password:
         
 
 #',['Home','Workplace Feeds', 'Settings'
@@ -70,8 +70,8 @@ if good:
         pages.workplace(db)
     if bio == 'Settings':
         pages.settings(db, user, storage)
-    logout = st.sidebar.button('Logout')
-    if logout:
-        user = auth.
+    #logout = st.sidebar.button('Logout')
+    #if logout:
+        #user = auth.
 
 
