@@ -63,7 +63,7 @@ if choice == 'Login':
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
             bio = st.radio('Jump to',['Home','Workplace Feeds', 'Settings'])
             good = True
-            st.write("none")
+            st.write(good)
         except requests.exceptions.HTTPError:
             st.error("Please fill out the correct information")
 
