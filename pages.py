@@ -43,7 +43,7 @@ def settings(db, user, storage):
 
 def home(db, user):
     st.subheader("Date")
-    st.info(datetime)
+    st.info(datetime.now())
     col1, col2 = st.columns(2)
     # col for Profile picture
     with col1:
