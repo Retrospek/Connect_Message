@@ -42,7 +42,7 @@ def settings(db, user, storage):
 
 
 def home(db, user):
-    st.subheader("Date: " + datetime.now() )
+    st.time_input("Time: ")
     col1, col2 = st.columns(2)
     # col for Profile picture
     with col1:
